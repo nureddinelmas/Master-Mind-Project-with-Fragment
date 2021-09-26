@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.nureddinelmas.mastermind.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_playerIntroFragment"
+            app:destination="@id/playerIntroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerIntroFragment"
+        android:name="com.nureddinelmas.mastermind.PlayerIntroFragment"
+        android:label="fragment_player_intro"
+        tools:layout="@layout/fragment_player_intro" >
+        <action
+            android:id="@+id/action_playerIntroFragment_to_twoPlayerFragment"
+            app:destination="@id/twoPlayerFragment" />
+        <action
+            android:id="@+id/action_playerIntroFragment_to_onePlayerFragment"
+            app:destination="@id/onePlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onePlayerFragment"
+        android:name="com.nureddinelmas.mastermind.OnePlayerFragment"
+        android:label="fragment_one_player"
+        tools:layout="@layout/fragment_one_player" />
+    <fragment
+        android:id="@+id/twoPlayerFragment"
+        android:name="com.nureddinelmas.mastermind.TwoPlayerFragment"
+        android:label="fragment_two_player"
+        tools:layout="@layout/fragment_two_player" />
+</navigation>
