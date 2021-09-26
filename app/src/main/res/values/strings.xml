@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">MasterMind</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Master Mind</string>
+    <string name="greeting">Hello and Welcome !!</string>
+    <string name="button_text">Press me</string>
+    <string name="new_greeting">Hello there %1$s!!</string>
 </resources>

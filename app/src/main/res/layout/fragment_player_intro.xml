@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/playerIntroFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_animation"
     tools:context=".PlayerIntroFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/inputButton"
+        android:layout_width="404dp"
+        android:layout_height="62dp"
+        android:backgroundTint="@color/colorGradientCenter"
+        android:gravity="center"
+        android:text="Play Now"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="418dp"
+        android:layout_height="247dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="402dp"
+            android:layout_height="77dp"
+            android:gravity="bottom|center"
+            android:text="How many player do you want ?"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/onePlayerRadioButton"
+            android:layout_width="329dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="16dp"
+            android:text="One Player"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/twoPlayerRadioButton"
+            android:layout_width="302dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="8dp"
+            android:text="Two Player"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="409dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="13dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/playerOneText"
+            android:layout_width="128dp"
+            android:layout_height="48dp"
+            android:gravity="right|center_horizontal|fill|end"
+            android:text="Player 1 :"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/playerOneEditText"
+            android:layout_width="253dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:hint="Enter a player name"
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="409dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/playerTwoText"
+            android:layout_width="128dp"
+            android:layout_height="48dp"
+            android:gravity="right|center_horizontal|fill|fill_horizontal"
+            android:text="Player 2 :"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/playerTwoEditText"
+            android:layout_width="254dp"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:hint="Enter a player name"
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
