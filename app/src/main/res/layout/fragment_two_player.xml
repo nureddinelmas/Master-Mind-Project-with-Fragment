@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".TwoPlayerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:text="Two Player Fragment"
+        android:gravity="center"/>
 
 </FrameLayout>
