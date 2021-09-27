@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_two_player.*
+import kotlinx.coroutines.processNextEventInCurrentThread
 import kotlin.system.exitProcess
 
 class TwoPlayerFragment : Fragment() {
@@ -82,12 +83,12 @@ class TwoPlayerFragment : Fragment() {
                 MotionEvent.ACTION_UP -> {
                     oneImageView.setImageResource(R.drawable.question)
                     twoImageView.setImageResource(R.drawable.question)
-                    fourImageView.setImageResource(R.drawable.question)
+                    threeImageView.setImageResource(R.drawable.question)
                     fourImageView.setImageResource(R.drawable.question)}
                 MotionEvent.ACTION_DOWN -> {
                     oneImageView.setImageResource(imageListResult[0] as Int)
                     twoImageView.setImageResource(imageListResult[1] as Int)
-                    fourImageView.setImageResource(imageListResult[2] as Int)
+                    threeImageView.setImageResource(imageListResult[2] as Int)
                     fourImageView.setImageResource(imageListResult[3] as Int)}
             }
             true
@@ -131,6 +132,7 @@ class TwoPlayerFragment : Fragment() {
             three = true
         }
 
+
         redImageView.setOnClickListener {
             if (!one){
                 oneImageView.setImageResource(R.drawable.red)
@@ -143,9 +145,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "red"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.red)
+                threeImageView.setImageResource(R.drawable.red)
                 three = true
-                fourImageView.tag = "red"
+                threeImageView.tag = "red"
             }
             else if(!four){
                 fourImageView.setImageResource(R.drawable.red)
@@ -166,9 +168,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "white"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.white)
+                threeImageView.setImageResource(R.drawable.white)
                 three = true
-                fourImageView.tag = "white"
+                threeImageView.tag = "white"
             }
             else if(!four){
                 fourImageView.setImageResource(R.drawable.white)
@@ -189,9 +191,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "blue"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.blue)
+                threeImageView.setImageResource(R.drawable.blue)
                 three = true
-                fourImageView.tag = "blue"
+                threeImageView.tag = "blue"
             }
             else if(!four){
                 fourImageView.setImageResource(R.drawable.blue)
@@ -212,9 +214,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "yellow"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.yellow)
+                threeImageView.setImageResource(R.drawable.yellow)
                 three = true
-                fourImageView.tag = "yellow"
+                threeImageView.tag = "yellow"
             }
             else if(!four){
                 fourImageView.setImageResource(R.drawable.yellow)
@@ -235,9 +237,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "black"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.black)
+                threeImageView.setImageResource(R.drawable.black)
                 three = true
-                fourImageView.tag = "black"
+                threeImageView.tag = "black"
             }
             else if(!four){
                 fourImageView.setImageResource(R.drawable.black)
@@ -258,9 +260,9 @@ class TwoPlayerFragment : Fragment() {
                 twoImageView.tag = "green"
             }
             else if(!three){
-                fourImageView.setImageResource(R.drawable.green)
+                threeImageView.setImageResource(R.drawable.green)
                 three = true
-                fourImageView.tag = "green"
+                threeImageView.tag = "green"
 
             }
             else if(!four){
@@ -370,20 +372,23 @@ class TwoPlayerFragment : Fragment() {
 
         // Om det finns ingen färg så ska visas bara
         if (imageList[0] != first && imageList[0] != second && imageList[0] != third && imageList[0] != fourth){
-
-            wrong += 1
+            wrong ++
+            println("bir")
         }
 
         if (imageList[1] != first && imageList[1] != second && imageList[1] != third && imageList[1] != fourth){
-            wrong += 1
+            wrong ++
+            println("iki")
         }
 
         if (imageList[2] != first && imageList[2] != second && imageList[2] != third && imageList[2] != fourth){
-            wrong += 1
+            wrong ++
+            println("uc")
         }
 
         if (imageList[3] != first && imageList[3] != second && imageList[3] != third && imageList[3] != fourth){
-            wrong += 1
+            wrong ++
+            println("dort")
         }
 
         // Right answer we check
@@ -395,12 +400,14 @@ class TwoPlayerFragment : Fragment() {
             right += 1
         }
         if (second == imageList[1]){
-            right == 1
+            right += 1
         }
         if (third == imageList[2]){
             right += 1
         }
 
+        println("wrong : $wrong")
+        println("right: $right")
 
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
@@ -415,7 +422,6 @@ class TwoPlayerFragment : Fragment() {
             Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
             dirButton = 0
-
         }
     }
 
@@ -459,9 +465,6 @@ class TwoPlayerFragment : Fragment() {
 
     private fun  transferToRecyclerView(){
         findBlackWhite()
-        println( "wrong : $wrong")
-        println("right : $right")
-
 
         imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], imageList[4], imageList[5], imageList[6],imageList[7],"$player"))
         TwoPlayerRecyclerView.layoutManager = LinearLayoutManager(activity)
@@ -472,8 +475,6 @@ class TwoPlayerFragment : Fragment() {
 
     private fun playerChoose() : String{
          playerKontrol++
-
-        println(playerKontrol)
         player = if (playerKontrol % 2 == 0){
             player1
         }else{
@@ -495,6 +496,11 @@ class TwoPlayerFragment : Fragment() {
     }
 
     private fun findBlackWhite(){
+        imageList[7] = R.drawable.grayoval
+        imageList[6] = R.drawable.grayoval
+        imageList[5] = R.drawable.grayoval
+        imageList[4] = R.drawable.grayoval
+
 
         when(right){
             1 -> imageList[4] = R.drawable.whiteoval
@@ -515,7 +521,7 @@ class TwoPlayerFragment : Fragment() {
             }
         }
 
-        when(right){
+        when(wrong){
             1 -> imageList[7] = R.drawable.blackoval
             2 -> {
                 imageList[7] = R.drawable.blackoval
