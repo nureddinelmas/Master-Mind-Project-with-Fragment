@@ -35,5 +35,13 @@
         android:id="@+id/twoPlayerFragment"
         android:name="com.nureddinelmas.mastermind.TwoPlayerFragment"
         android:label="fragment_two_player"
-        tools:layout="@layout/fragment_two_player" />
+        tools:layout="@layout/fragment_two_player" >
+        <argument android:name="player1"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="player2"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
