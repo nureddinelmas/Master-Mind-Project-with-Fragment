@@ -24,23 +24,24 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="247dp"
+        android:gravity="left"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="402dp"
+            android:layout_width="match_parent"
             android:layout_height="77dp"
             android:gravity="bottom|center"
-            android:text="How many player do you want ?"
+            android:text="How many player do you want to play?"
             android:textSize="24sp" />
 
         <RadioButton
             android:id="@+id/onePlayerRadioButton"
-            android:layout_width="329dp"
+            android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginStart="68dp"
             android:layout_marginTop="16dp"
@@ -49,11 +50,11 @@
 
         <RadioButton
             android:id="@+id/twoPlayerRadioButton"
-            android:layout_width="302dp"
-            android:layout_height="65dp"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
-            android:text="Two Player"
+            android:text="Two Players"
             android:textSize="24sp" />
 
     </LinearLayout>

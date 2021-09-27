@@ -1,15 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TwoPlayerFragment">
+    android:layout_height="wrap_content"
+    android:background="@color/colorGradientStart">
 
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayoutPlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:text="Two Player Fragment"
-        android:gravity="center"/>
+        android:background="@color/colorGradientCenter"
+        app:layout_constraintBottom_toTopOf="@+id/LinearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".TwoPlayerFragment">
 
-</FrameLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:backgroundTint="#CA7668"
+            android:text="Play Now"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/oneImageView"
+                android:layout_width="90dp"
+                android:layout_height="74dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/twoImageView"
+                android:layout_width="90dp"
+                android:layout_height="74dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/threeImageView"
+                android:layout_width="90dp"
+                android:layout_height="74dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/question" />
+
+            <ImageView
+                android:id="@+id/fourImageView"
+                android:layout_width="90dp"
+                android:layout_height="74dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/question" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <ImageView
+                android:id="@+id/redImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/red" />
+
+            <ImageView
+                android:id="@+id/whiteImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/white" />
+
+            <ImageView
+                android:id="@+id/blueImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/blue" />
+
+            <ImageView
+                android:id="@+id/yellowImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/yellow" />
+
+            <ImageView
+                android:id="@+id/blackImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/black"
+                tools:srcCompat="@drawable/black" />
+
+            <ImageView
+                android:id="@+id/greenImageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                app:srcCompat="@drawable/green"
+                tools:srcCompat="@drawable/green" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGradientStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ConstraintLayoutPlay"
+        tools:context=".TwoPlayerFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/TwoPlayerRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            tools:listitem="@layout/twoplayer_recyclerview" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
