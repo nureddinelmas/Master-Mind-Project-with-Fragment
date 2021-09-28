@@ -29,8 +29,6 @@ class ResultAdapter(private val imageLook: ArrayList<ResultLook>) : RecyclerView
         holder.binding.resultImage3.setImageResource(imageLook.look3)
         holder.binding.resultImage4.setImageResource(imageLook.look4)
         holder.binding.player.text = imageLook.player
-
-
     }
 
     override fun getItemCount() = imageLook.size

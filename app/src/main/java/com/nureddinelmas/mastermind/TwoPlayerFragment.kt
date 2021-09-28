@@ -2,7 +2,6 @@ package com.nureddinelmas.mastermind
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_two_player.*
-import kotlinx.coroutines.processNextEventInCurrentThread
 import kotlin.system.exitProcess
 
 class TwoPlayerFragment : Fragment() {
@@ -29,11 +27,11 @@ class TwoPlayerFragment : Fragment() {
     var wrong = 0
     var right = 0
 
+
     var dirButton = 1
 
-
-    lateinit var player1 : String
-    lateinit var player2 : String
+    private lateinit var player1 : String
+    private lateinit var player2 : String
     var player : String = ""
     var playerKontrol : Int = 0
 
@@ -48,12 +46,8 @@ class TwoPlayerFragment : Fragment() {
         R.drawable.grayoval
     )
 
-    var imageListResult = mutableListOf(first, second, third, fourth)
 
     var imageLook = ArrayList<ResultLook>()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +72,7 @@ class TwoPlayerFragment : Fragment() {
 
         findColor()
 
-        constraint.setOnTouchListener { view, motionEvent ->
+        constraintTwoPlayer.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action){
                 MotionEvent.ACTION_UP -> {
                     oneImageView.setImageResource(R.drawable.question)
@@ -86,10 +80,10 @@ class TwoPlayerFragment : Fragment() {
                     threeImageView.setImageResource(R.drawable.question)
                     fourImageView.setImageResource(R.drawable.question)}
                 MotionEvent.ACTION_DOWN -> {
-                    oneImageView.setImageResource(imageListResult[0] as Int)
-                    twoImageView.setImageResource(imageListResult[1] as Int)
-                    threeImageView.setImageResource(imageListResult[2] as Int)
-                    fourImageView.setImageResource(imageListResult[3] as Int)}
+                    oneImageView.setImageResource(first)
+                    twoImageView.setImageResource(second)
+                    threeImageView.setImageResource(third)
+                    fourImageView.setImageResource(fourth)}
             }
             true
         }
@@ -276,10 +270,11 @@ class TwoPlayerFragment : Fragment() {
 
             when (dirButton) {
                 1 -> {
+
                     playerChoose()
                     button.text = "$player! Du börjar!!"
                     dirButton = 0
-                    imageLook.clear()
+
                 }
                0 -> {
                     //timer.start()
@@ -289,78 +284,6 @@ class TwoPlayerFragment : Fragment() {
                 }
             }
         }
-
-
-    }
-
-    private fun findColor() {
-
-
-        var n1 = (0..5).random()
-        var n2 = (0..5).random()
-        while (n1 == n2){
-            n2 = (0..5).random()
-        }
-
-        var n3 = (0..5).random()
-        while (n3 == n1 || n3 == n2){
-            n3 = (0..5).random()
-        }
-
-        var n4 = (0..5).random()
-        while (n4 == n1 || n4 == n2 || n4 == n3 ){
-            n4 = (0..5).random()
-        }
-
-        var n5 = (0..5).random()
-        while(n5 == n1 || n5 == n2 || n5 == n3 || n5 == n4){
-            n5 = (0..5).random()
-        }
-
-        var n6 = (0..5).random()
-        while(n6 == n1 || n6 == n2 || n6 == n3 || n6 == n4 || n6 == n5){
-            n6 = (0..5).random()
-        }
-
-
-        when(n1){
-            0 -> first = R.drawable.white
-            1 -> first = R.drawable.red
-            2 -> first = R.drawable.yellow
-            3 -> first = R.drawable.blue
-            4 -> first = R.drawable.black
-            5 -> first = R.drawable.green
-        }
-
-        when(n2){
-            0 -> second = R.drawable.white
-            1 -> second = R.drawable.red
-            2 -> second = R.drawable.yellow
-            3 -> second = R.drawable.blue
-            4 -> second = R.drawable.black
-            5 -> second = R.drawable.green
-        }
-
-        when(n3){
-            0 -> third = R.drawable.white
-            1 -> third = R.drawable.red
-            2 -> third = R.drawable.yellow
-            3 -> third = R.drawable.blue
-            4 -> third = R.drawable.black
-            5 -> third = R.drawable.green
-
-        }
-
-        when(n4){
-            0 -> fourth = R.drawable.white
-            1 -> fourth = R.drawable.red
-            2 -> fourth = R.drawable.yellow
-            3 -> fourth = R.drawable.blue
-            4 -> fourth == R.drawable.black
-            5 -> fourth = R.drawable.green
-        }
-        imageListResult = mutableListOf(first,second,third,fourth)
-
     }
 
     private fun checkIt(){
@@ -373,22 +296,22 @@ class TwoPlayerFragment : Fragment() {
         // Om det finns ingen färg så ska visas bara
         if (imageList[0] != first && imageList[0] != second && imageList[0] != third && imageList[0] != fourth){
             wrong ++
-            println("bir")
+
         }
 
         if (imageList[1] != first && imageList[1] != second && imageList[1] != third && imageList[1] != fourth){
             wrong ++
-            println("iki")
+
         }
 
         if (imageList[2] != first && imageList[2] != second && imageList[2] != third && imageList[2] != fourth){
             wrong ++
-            println("uc")
+
         }
 
         if (imageList[3] != first && imageList[3] != second && imageList[3] != third && imageList[3] != fourth){
             wrong ++
-            println("dort")
+
         }
 
         // Right answer we check
@@ -406,26 +329,20 @@ class TwoPlayerFragment : Fragment() {
             right += 1
         }
 
-        println("wrong : $wrong")
-        println("right: $right")
-
-
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-                Snackbar.make(requireView(),"BRA JOBBAT!!! ${player}! Du vann!! ::)) ", Snackbar.LENGTH_INDEFINITE).setAction("Exit? ", View.OnClickListener {
-                    exitProcess(0)
-                }).show()
-
-            dirButton = 1
             findColor()
+            button.text = "Play Again!! "
+            imageLook.clear()
+            Snackbar.make(requireView(),"BRA JOBBAT!!! ${player}! Du vann!! ::)) ", Snackbar.LENGTH_INDEFINITE).setAction("Exit? ", View.OnClickListener { exitProcess(0) }).show()
+                dirButton = 1
+        }
 
-        }else{
+        else{
             Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
             dirButton = 0
         }
     }
-
-
 
     private fun createNewImageList(){
 
@@ -470,7 +387,6 @@ class TwoPlayerFragment : Fragment() {
         TwoPlayerRecyclerView.layoutManager = LinearLayoutManager(activity)
         val adapter = ResultAdapter(imageLook)
         TwoPlayerRecyclerView.adapter = adapter
-
     }
 
     private fun playerChoose() : String{
@@ -483,17 +399,7 @@ class TwoPlayerFragment : Fragment() {
         return player
     }
 
-    private val timer = object : CountDownTimer(15000,1000) {
-        override fun onTick(millisUntilFinished: Long) {
-          //  textCount.text = "${millisUntilFinished/1000} seconder"
-            playerKontrol += 1
-        }
 
-        override fun onFinish() {
-           // textCount.text = "End"
-        }
-
-    }
 
     private fun findBlackWhite(){
         imageList[7] = R.drawable.grayoval
@@ -541,6 +447,65 @@ class TwoPlayerFragment : Fragment() {
         }
 
 
+    }
+
+    private fun findColor() {
+
+
+        var forsta = (0..5).random()
+        var andra = (0..5).random()
+        while (forsta == andra){
+            andra = (0..5).random()
+        }
+
+        var tredje = (0..5).random()
+        while (tredje == forsta || tredje == andra){
+            tredje = (0..5).random()
+        }
+
+        var fjerde = (0..5).random()
+        while (fjerde == forsta || fjerde == andra || fjerde == tredje ){
+            fjerde = (0..5).random()
+        }
+
+
+        when(forsta){
+            0 -> first = R.drawable.white
+            1 -> first = R.drawable.red
+            2 -> first = R.drawable.yellow
+            3 -> first = R.drawable.blue
+            4 -> first = R.drawable.black
+            5 -> first = R.drawable.green
+        }
+
+        when(andra){
+            0 -> second = R.drawable.white
+            1 -> second = R.drawable.red
+            2 -> second = R.drawable.yellow
+            3 -> second = R.drawable.blue
+            4 -> second = R.drawable.black
+            5 -> second = R.drawable.green
+        }
+
+        when(tredje){
+            0 -> third = R.drawable.white
+            1 -> third = R.drawable.red
+            2 -> third = R.drawable.yellow
+            3 -> third = R.drawable.blue
+            4 -> third = R.drawable.black
+            5 -> third = R.drawable.green
+
+        }
+
+        when(fjerde){
+            0 -> fourth = R.drawable.white
+            1 -> fourth = R.drawable.red
+            2 -> fourth = R.drawable.yellow
+            3 -> fourth = R.drawable.blue
+            4 -> fourth = R.drawable.black
+            5 -> fourth = R.drawable.green
+        }
+        println("$first, $second, $third, $fourth")
     }
 
 }

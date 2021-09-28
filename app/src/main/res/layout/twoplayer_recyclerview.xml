@@ -117,9 +117,7 @@
                 android:layout_weight="1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@drawable/ic_launcher_background" />
-
         </LinearLayout>
-
 
         <TextView
             android:id="@+id/player"

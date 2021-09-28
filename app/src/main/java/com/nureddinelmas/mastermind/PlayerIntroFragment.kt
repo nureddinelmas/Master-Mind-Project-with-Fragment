@@ -51,7 +51,7 @@ class PlayerIntroFragment : Fragment() {
             twoPlayerRadioButton.isChecked = false
 
             inputButton.setOnClickListener {
-                val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToOnePlayerFragment()
+                val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToOnePlayerFragment(playerOneEditText.text.toString())
                 Navigation.findNavController(it).navigate(action)
 
             }
