@@ -9,7 +9,7 @@
         android:id="@+id/introFragment"
         android:name="com.nureddinelmas.mastermind.IntroFragment"
         android:label="fragment_intro"
-        tools:layout="@layout/fragment_intro" >
+        tools:layout="@layout/fragment_intro">
         <action
             android:id="@+id/action_introFragment_to_playerIntroFragment"
             app:destination="@id/playerIntroFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/playerIntroFragment"
         android:name="com.nureddinelmas.mastermind.PlayerIntroFragment"
         android:label="fragment_player_intro"
-        tools:layout="@layout/fragment_player_intro" >
+        tools:layout="@layout/fragment_player_intro">
         <action
             android:id="@+id/action_playerIntroFragment_to_twoPlayerFragment"
             app:destination="@id/twoPlayerFragment"
@@ -35,23 +35,43 @@
         android:id="@+id/onePlayerFragment"
         android:name="com.nureddinelmas.mastermind.OnePlayerFragment"
         android:label="fragment_one_player"
-        tools:layout="@layout/fragment_one_player" >
+        tools:layout="@layout/fragment_one_player">
         <argument
             android:name="player"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_onePlayerFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/twoPlayerFragment"
         android:name="com.nureddinelmas.mastermind.TwoPlayerFragment"
         android:label="fragment_two_player"
-        tools:layout="@layout/fragment_two_player" >
-        <argument android:name="player1"
+        tools:layout="@layout/fragment_two_player">
+        <argument
+            android:name="player1"
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="player2"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.nureddinelmas.mastermind.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_onePlayerFragment"
+            app:destination="@id/onePlayerFragment" />
+        <argument
+            android:name="player"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
     </fragment>
 </navigation>

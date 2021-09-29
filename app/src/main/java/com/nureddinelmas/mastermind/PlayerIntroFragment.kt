@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_player_intro.*
 
 class PlayerIntroFragment : Fragment() {
@@ -70,7 +71,7 @@ class PlayerIntroFragment : Fragment() {
 
             inputButton.setOnClickListener {
                 val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToTwoPlayerFragment(playerOneEditText.text.toString(),playerTwoEditText.text.toString())
-                Navigation.findNavController(it).navigate(action)
+                findNavController().navigate(action)
             }
         }
     }

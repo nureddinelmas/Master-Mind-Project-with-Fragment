@@ -1,5 +1,6 @@
 package com.nureddinelmas.mastermind
 
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_one_player.*
@@ -40,11 +43,12 @@ class OnePlayerFragment : Fragment() {
 
     var mediaPlayer : MediaPlayer? = null
 
-    private var dirButton = 1
+    private var dirButton = 0
 
     var player : String = ""
     var playerKontrol : Int = 0
 
+    var score : Int = 1000
     var imageList = mutableListOf(
         R.drawable.red,
         R.drawable.white,
@@ -56,9 +60,10 @@ class OnePlayerFragment : Fragment() {
         R.drawable.grayoval
     )
 
-    var imageListResult = mutableListOf(first, second, third, fourth)
+    //var imageListResult = mutableListOf(first, second, third, fourth)
 
     var imageLook = ArrayList<ResultLook>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +86,7 @@ class OnePlayerFragment : Fragment() {
         findColor()
 
 
+
         constraintLayoutOnePlayer.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action){
                 MotionEvent.ACTION_UP -> {
@@ -89,10 +95,10 @@ class OnePlayerFragment : Fragment() {
                     threeImageView.setImageResource(R.drawable.question)
                     fourImageView.setImageResource(R.drawable.question)}
                 MotionEvent.ACTION_DOWN -> {
-                    oneImageView.setImageResource(imageListResult[0] as Int)
-                    twoImageView.setImageResource(imageListResult[1] as Int)
-                    threeImageView.setImageResource(imageListResult[2] as Int)
-                    fourImageView.setImageResource(imageListResult[3] as Int)}
+                    oneImageView.setImageResource(first)
+                    twoImageView.setImageResource(second)
+                    threeImageView.setImageResource(third)
+                    fourImageView.setImageResource(fourth)}
             }
             true
         }
@@ -273,11 +279,14 @@ class OnePlayerFragment : Fragment() {
             }
         }
 
+
+
         buttonOnePlayer.setOnClickListener{
 
             when (dirButton) {
                 1 -> {
                     buttonOnePlayer.text = "Play Now"
+
                     dirButton = 0
 
                 }
@@ -333,18 +342,15 @@ class OnePlayerFragment : Fragment() {
         }
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            findColor()
-            imageLook.clear()
-            mediaPlayer = MediaPlayer.create(activity, R.raw.celebration)
-            mediaPlayer!!.start()
-            Snackbar.make(requireView(),"BRA JOBBAT!!! ${player}! Du vann!! ::)) ", Snackbar.LENGTH_INDEFINITE).setAction("Exit? ", View.OnClickListener { exitProcess(0) }).show()
-            dirButton = 1
+                val action = OnePlayerFragmentDirections.actionOnePlayerFragmentToScoreFragment(player, score)
+               Navigation.findNavController(requireView()).navigate(action)
         }
 
         else{
             Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
             dirButton = 0
+            score -= 25
         }
     }
 

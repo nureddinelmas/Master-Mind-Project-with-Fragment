@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7ABAED"
+    android:backgroundTint="#84BDDF"
+    tools:context=".ScoreFragment">
+
+    <Button
+        android:id="@+id/playAgainButton"
+        android:layout_width="182dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="40dp"
+        android:autoSizeTextType="uniform"
+        android:text="Play Again"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHighPointName" />
+
+    <TextView
+        android:id="@+id/textHighPoint"
+        android:layout_width="134dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="false"
+        android:background="#5F9FE8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textHighPointName"
+        android:layout_width="252dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="false"
+        android:background="#5B98DD"
+        app:layout_constraintEnd_toStartOf="@+id/textHighPoint"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="217dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="false"
+        android:text="High Score : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPlayerPoint" />
+
+    <TextView
+        android:id="@+id/textPlayerPoint"
+        android:layout_width="119dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="12dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="true"
+        android:background="#679FDD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPlayerName" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/congratulations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textPlayerName"
+        android:layout_width="395dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="false"
+        android:text="Your Point : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/resetHighScoreButton"
+        android:layout_width="182dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        android:autoSizeTextType="uniform"
+        android:text="Reset High Score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHighPointName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
