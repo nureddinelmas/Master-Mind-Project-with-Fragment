@@ -1,6 +1,6 @@
 package com.nureddinelmas.mastermind
 
-import android.content.SharedPreferences
+
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_one_player.*
@@ -26,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_one_player.yellowImageView
 import kotlinx.android.synthetic.main.fragment_two_player.*
 import kotlin.system.exitProcess
 
+
 class OnePlayerFragment : Fragment() {
    private var one : Boolean =false
     private  var two : Boolean =false
@@ -40,8 +40,6 @@ class OnePlayerFragment : Fragment() {
 
     private var wrong = 0
     private  var right = 0
-
-    var mediaPlayer : MediaPlayer? = null
 
     private var dirButton = 0
 
@@ -60,9 +58,10 @@ class OnePlayerFragment : Fragment() {
         R.drawable.grayoval
     )
 
-    //var imageListResult = mutableListOf(first, second, third, fourth)
+
 
     var imageLook = ArrayList<ResultLook>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +82,9 @@ class OnePlayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findColor()
+
+
+         findColor()
 
 
 

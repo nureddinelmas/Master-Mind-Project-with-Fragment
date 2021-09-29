@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_score.*
+import android.media.MediaPlayer as MediaPlayer
 
 class ScoreFragment : Fragment() {
 
     private lateinit var sharedPreferences: SharedPreferences
+
 
     private var player : String = ""
     private var yourScore : Int = 0
@@ -65,6 +67,7 @@ class ScoreFragment : Fragment() {
 
             textHighPoint.text = "$yourScore"
             textHighPointName.text = "$player"
+
             sharedPreferences.edit().putInt("score", yourScore).apply()
             sharedPreferences.edit().putString("player", player).apply()
         }

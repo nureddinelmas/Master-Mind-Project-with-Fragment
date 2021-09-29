@@ -57,6 +57,9 @@
             android:name="player2"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_twoPlayerFragment_self"
+            app:destination="@id/twoPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/scoreFragment"

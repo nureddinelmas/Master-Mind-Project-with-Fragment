@@ -1,12 +1,15 @@
 package com.nureddinelmas.mastermind
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_two_player.*
@@ -71,6 +74,8 @@ class TwoPlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         findColor()
+        playerChoose()
+        button.text = "$player är det din tur!"
 
         constraintTwoPlayer.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action){
@@ -267,22 +272,9 @@ class TwoPlayerFragment : Fragment() {
         }
 
         button.setOnClickListener{
-
-            when (dirButton) {
-                1 -> {
-
-                    playerChoose()
-                    button.text = "$player! Du börjar!!"
-                    dirButton = 0
-
-                }
-               0 -> {
-                    //timer.start()
-                    checkIt()
-                    playerChoose()
-                    button.text = "$player är det din tur!"
-                }
-            }
+            checkIt()
+            playerChoose()
+            button.text = "$player är det din tur!"
         }
     }
 
@@ -293,7 +285,7 @@ class TwoPlayerFragment : Fragment() {
 
         createNewImageList()
 
-        // Om det finns ingen färg så ska visas bara
+
         if (imageList[0] != first && imageList[0] != second && imageList[0] != third && imageList[0] != fourth){
             wrong ++
 
@@ -330,17 +322,27 @@ class TwoPlayerFragment : Fragment() {
         }
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            findColor()
-            button.text = "Play Again!! "
-            imageLook.clear()
-            Snackbar.make(requireView(),"BRA JOBBAT!!! ${player}! Du vann!! ::)) ", Snackbar.LENGTH_INDEFINITE).setAction("Exit? ", View.OnClickListener { exitProcess(0) }).show()
-                dirButton = 1
+
+            val alert = AlertDialog.Builder(this.requireContext())
+            alert.setTitle("Congratulations $player !!")
+            alert.setMessage("Do you want to play again?")
+            alert.setIcon(R.drawable.gameover)
+            alert.setPositiveButton("Yes"){dialog, which ->
+                val action = TwoPlayerFragmentDirections.actionTwoPlayerFragmentSelf(player1, player2)
+                Navigation.findNavController(this.requireView()).navigate(action)
+            }
+           alert.setNegativeButton("No"){dialog, which ->
+
+               exitProcess(0)
+           }
+            alert.show()
+
         }
 
         else{
             Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
-            dirButton = 0
+
         }
     }
 
