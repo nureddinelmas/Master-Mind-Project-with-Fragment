@@ -42,7 +42,7 @@ class ScoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = this.requireActivity().getSharedPreferences("com.nureddinelmas.mastermind", Context.MODE_PRIVATE)
 
-        conImageView.visibility =View.INVISIBLE
+
 
         scoreFromPreferences = sharedPreferences.getInt("score", 0)
         playerFromPreferences = sharedPreferences.getString("player","No Player Name")
@@ -51,34 +51,34 @@ class ScoreFragment : Fragment() {
             textHighPoint.text = "0"
             textHighPointName.text = "No Player Name"
         }else{
-            textHighPoint.text = "$playerFromPreferences"
-            textHighPointName.text = "$scoreFromPreferences"
+            textHighPointName.text = "$playerFromPreferences"
+            textHighPoint.text  = "$scoreFromPreferences"
         }
 
         sharedPreferences = this.requireActivity().getSharedPreferences("com.nureddinelmas.mastermind", Context.MODE_PRIVATE)
 
-        textPlayerName.text = "$player, your point :"
+        textPlayerName.text = "$player"
         textPlayerPoint.text = "$yourScore"
 
 
         if (yourScore > scoreFromPreferences!!){
-            conImageView.visibility =View.VISIBLE
+
             textHighPoint.text = "$yourScore"
             textHighPointName.text = "$player"
             sharedPreferences.edit().putInt("score", yourScore).apply()
             sharedPreferences.edit().putString("player", player).apply()
         }
 
-        playAgainButton.setOnClickListener {
+        playAgainText.setOnClickListener {
             val action = ScoreFragmentDirections.actionScoreFragmentToOnePlayerFragment(player)
             Navigation.findNavController(it).navigate(action)
 
         }
 
-        resetHighScoreButton.setOnClickListener {
+        resetScoreText.setOnClickListener {
 
             textHighPoint.text = "0"
-            textHighPointName.text = "No Player Name"
+            textHighPointName.text = "No Name"
 
 
             scoreFromPreferences = sharedPreferences.getInt("score", -1)
