@@ -348,10 +348,19 @@ class OnePlayerFragment : Fragment() {
         }
 
         else{
-            Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
+            Snackbar.make(requireView(),"${player}! UNSUCCESSFULLY :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
             dirButton = 0
             score -= 25
+
+            oneImageView.setImageResource(R.drawable.question)
+            twoImageView.setImageResource(R.drawable.question)
+            threeImageView.setImageResource(R.drawable.question)
+            fourImageView.setImageResource(R.drawable.question)
+            one = false
+            two = false
+            three = false
+            four = false
         }
     }
 

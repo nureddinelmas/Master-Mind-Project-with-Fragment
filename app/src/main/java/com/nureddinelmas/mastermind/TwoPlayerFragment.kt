@@ -324,7 +324,7 @@ class TwoPlayerFragment : Fragment() {
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
 
             val alert = AlertDialog.Builder(this.requireContext())
-            alert.setTitle("Congratulations $player !!")
+            alert.setTitle("Congratulations ${player.uppercase()} :))")
             alert.setMessage("Do you want to play again?")
             alert.setIcon(R.drawable.gameover)
             alert.setPositiveButton("Yes"){dialog, which ->
@@ -340,9 +340,17 @@ class TwoPlayerFragment : Fragment() {
         }
 
         else{
-            Snackbar.make(requireView(),"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
+            Snackbar.make(requireView(),"${player.uppercase()}! UNSUCCESSFULLY :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
             transferToRecyclerView()
 
+            oneImageView.setImageResource(R.drawable.question)
+            twoImageView.setImageResource(R.drawable.question)
+            threeImageView.setImageResource(R.drawable.question)
+            fourImageView.setImageResource(R.drawable.question)
+            one = false
+            two = false
+            three = false
+            four = false
         }
     }
 

@@ -1,5 +1,6 @@
 package com.nureddinelmas.mastermind
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -20,6 +21,8 @@ class ScoreFragment : Fragment() {
     private var yourScore : Int = 0
     private var scoreFromPreferences : Int? = null
     private var playerFromPreferences: String? = null
+
+    lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,23 +56,33 @@ class ScoreFragment : Fragment() {
             textHighPoint.text = "0"
             textHighPointName.text = "No Player Name"
         }else{
-            textHighPointName.text = "$playerFromPreferences"
+            textHighPointName.text = "${playerFromPreferences!!.uppercase()}"
             textHighPoint.text  = "$scoreFromPreferences"
         }
 
-        sharedPreferences = this.requireActivity().getSharedPreferences("com.nureddinelmas.mastermind", Context.MODE_PRIVATE)
+        sharedPreferences = requireActivity().getSharedPreferences("com.nureddinelmas.mastermind", Context.MODE_PRIVATE)
 
-        textPlayerName.text = "$player"
+        textPlayerName.text = "${player.uppercase()}"
         textPlayerPoint.text = "$yourScore"
 
 
         if (yourScore > scoreFromPreferences!!){
+            scoreFragmentConstraintLayout.visibility = View.INVISIBLE
+            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.winsoundeffect)
+            mediaPlayer.start()
 
-            textHighPoint.text = "$yourScore"
-            textHighPointName.text = "$player"
+            var alert = AlertDialog.Builder(this.requireContext())
+            alert.setMessage(":)) CONGRATULATIONS ${player.uppercase()} :)) You are best player :))")
+            alert.setPositiveButton("Go to Game Result"){dialog, which ->
+                scoreFragmentConstraintLayout.visibility = View.VISIBLE
+                textHighPoint.text = "$yourScore"
+                textHighPointName.text = "${player!!.uppercase()}"
 
-            sharedPreferences.edit().putInt("score", yourScore).apply()
-            sharedPreferences.edit().putString("player", player).apply()
+                sharedPreferences.edit().putInt("score", yourScore).apply()
+                sharedPreferences.edit().putString("player", player).apply()
+            }
+            alert.show()
+
         }
 
         playAgainText.setOnClickListener {

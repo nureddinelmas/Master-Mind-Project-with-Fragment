@@ -11,8 +11,8 @@
 
     <Button
         android:id="@+id/inputButton"
-        android:layout_width="404dp"
-        android:layout_height="62dp"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
         android:backgroundTint="@color/colorGradientCenter"
         android:gravity="center"
         android:text="Play Now"
@@ -61,8 +61,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
         android:layout_marginTop="13dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
 
         <TextView
             android:id="@+id/playerOneText"
-            android:layout_width="128dp"
+            android:layout_width="155dp"
             android:layout_height="48dp"
             android:gravity="right|center_horizontal|fill|end"
             android:text="Player 1 :"
@@ -80,7 +80,7 @@
         <EditText
             android:id="@+id/playerOneEditText"
             android:layout_width="253dp"
-            android:layout_height="49dp"
+            android:layout_height="53dp"
             android:ems="10"
             android:hint="Enter a player name"
             android:inputType="textPersonName"
@@ -89,8 +89,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="409dp"
-        android:layout_height="58dp"
+        android:layout_width="385dp"
+        android:layout_height="47dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
 
         <TextView
             android:id="@+id/playerTwoText"
-            android:layout_width="128dp"
+            android:layout_width="155dp"
             android:layout_height="48dp"
             android:gravity="right|center_horizontal|fill|fill_horizontal"
             android:text="Player 2 :"

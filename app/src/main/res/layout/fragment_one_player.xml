@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,44 +65,44 @@
 
         <ImageView
             android:id="@+id/redImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/red" />
 
         <ImageView
             android:id="@+id/whiteImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/white" />
 
         <ImageView
             android:id="@+id/blueImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/blue" />
 
         <ImageView
             android:id="@+id/yellowImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/yellow" />
 
         <ImageView
             android:id="@+id/blackImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/black"
             tools:srcCompat="@drawable/black" />
 
         <ImageView
             android:id="@+id/greenImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/green"
             tools:srcCompat="@drawable/green" />

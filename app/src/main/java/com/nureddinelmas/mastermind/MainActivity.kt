@@ -1,5 +1,6 @@
 package com.nureddinelmas.mastermind
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nureddinelmas.mastermind.databinding.ActivityMainBinding

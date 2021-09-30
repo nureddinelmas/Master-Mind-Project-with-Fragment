@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/introFragment"
-    android:background="@drawable/gradient_animation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_animation"
     tools:context=".IntroFragment">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="409dp"
-        android:layout_height="198dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mastermind" />
 
     <TextView
         android:id="@+id/enterText"
-        android:layout_width="402dp"
-        android:layout_height="86dp"
+        android:layout_width="313dp"
+        android:layout_height="53dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="276dp"
         android:layout_marginEnd="8dp"
         android:gravity="center|center_horizontal"
-        android:text="To start, Press screen"
+        android:text="Press screen to start"
         android:textColor="#116C12"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
