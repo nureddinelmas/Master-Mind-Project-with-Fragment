@@ -52,8 +52,14 @@ class PlayerIntroFragment : Fragment() {
             twoPlayerRadioButton.isChecked = false
 
             inputButton.setOnClickListener {
-                val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToOnePlayerFragment(playerOneEditText.text.toString())
-                Navigation.findNavController(it).navigate(action)
+                if(playerOneEditText.text.toString() == ""){
+                    playerOneEditText.error = "Please enter first player name !"
+                }else{
+
+                    val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToOnePlayerFragment(playerOneEditText.text.toString())
+                    Navigation.findNavController(it).navigate(action)
+                }
+
 
             }
         }
@@ -70,8 +76,17 @@ class PlayerIntroFragment : Fragment() {
             onePlayerRadioButton.isChecked = false
 
             inputButton.setOnClickListener {
-                val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToTwoPlayerFragment(playerOneEditText.text.toString(),playerTwoEditText.text.toString())
-                findNavController().navigate(action)
+
+                if(playerOneEditText.text.toString() == ""){
+                   playerOneEditText.error = "Please enter first player name !"
+                }else if (playerTwoEditText.text.toString() == ""){
+                    playerTwoEditText.error = "Please enter second name !"
+                }
+                else{
+                    val action = PlayerIntroFragmentDirections.actionPlayerIntroFragmentToTwoPlayerFragment(playerOneEditText.text.toString(),playerTwoEditText.text.toString())
+                    findNavController().navigate(action)
+                }
+
             }
         }
     }

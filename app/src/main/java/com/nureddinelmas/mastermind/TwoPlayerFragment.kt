@@ -75,9 +75,9 @@ class TwoPlayerFragment : Fragment() {
 
         findColor()
         playerChoose()
-        button.text = "$player är det din tur!"
+        button.text = "$player now it´s your turn!"
 
-        constraintTwoPlayer.setOnTouchListener { view, motionEvent ->
+      /*  constraintTwoPlayer.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action){
                 MotionEvent.ACTION_UP -> {
                     oneImageView.setImageResource(R.drawable.question)
@@ -92,6 +92,8 @@ class TwoPlayerFragment : Fragment() {
             }
             true
         }
+
+       */
 
 
         oneImageView.setOnClickListener {
@@ -274,7 +276,7 @@ class TwoPlayerFragment : Fragment() {
         button.setOnClickListener{
             checkIt()
             playerChoose()
-            button.text = "$player är det din tur!"
+            button.text = "$player now it´s your turn!"
         }
     }
 

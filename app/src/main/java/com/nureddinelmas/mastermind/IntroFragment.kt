@@ -1,5 +1,6 @@
 package com.nureddinelmas.mastermind
 
+import android.app.AlertDialog
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -38,6 +39,14 @@ class IntroFragment : Fragment() {
             val action = IntroFragmentDirections.actionIntroFragmentToPlayerIntroFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+        goToInstructionsTextView.setOnClickListener {
+            val action = IntroFragmentDirections.actionIntroFragmentToHowToPlayFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+
+
     }
 
 }

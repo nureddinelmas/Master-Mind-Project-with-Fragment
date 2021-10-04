@@ -63,6 +63,7 @@ class OnePlayerFragment : Fragment() {
     var imageLook = ArrayList<ResultLook>()
 
 
+    var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +89,7 @@ class OnePlayerFragment : Fragment() {
 
 
 
-        constraintLayoutOnePlayer.setOnTouchListener { view, motionEvent ->
+      /* constraintLayoutOnePlayer.setOnTouchListener { view, motionEvent ->
             when(motionEvent.action){
                 MotionEvent.ACTION_UP -> {
                     oneImageView.setImageResource(R.drawable.question)
@@ -103,6 +104,9 @@ class OnePlayerFragment : Fragment() {
             }
             true
         }
+
+
+       */
 
         oneImageView.setOnClickListener {
             oneImageView.setImageResource(R.drawable.question)
@@ -294,6 +298,7 @@ class OnePlayerFragment : Fragment() {
                 0 -> {
                     checkIt()
                     buttonOnePlayer.text = "Try one more Time"
+
                 }
             }
         }

@@ -15,9 +15,9 @@
             android:id="@+id/p1"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="4dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -26,9 +26,9 @@
             android:id="@+id/p2"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="4dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="2dp"
             app:layout_constraintStart_toEndOf="@+id/p1"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -37,9 +37,9 @@
             android:id="@+id/p3"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="4dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="2dp"
             app:layout_constraintStart_toEndOf="@+id/p2"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -48,7 +48,7 @@
             android:id="@+id/p4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="2dp"
+            android:layout_margin="4dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toEndOf="@+id/p3"
@@ -121,8 +121,8 @@
 
         <TextView
             android:id="@+id/player"
-            android:layout_width="128dp"
-            android:layout_height="50dp"
+            android:layout_width="111dp"
+            android:layout_height="48dp"
             android:layout_margin="2dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="2dp"

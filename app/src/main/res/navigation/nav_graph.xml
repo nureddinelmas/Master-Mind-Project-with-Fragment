@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_introFragment_to_playerIntroFragment"
             app:destination="@id/playerIntroFragment" />
+        <action
+            android:id="@+id/action_introFragment_self"
+            app:destination="@id/introFragment" />
+        <action
+            android:id="@+id/action_introFragment_to_howToPlayFragment"
+            app:destination="@id/howToPlayFragment" />
     </fragment>
     <fragment
         android:id="@+id/playerIntroFragment"
@@ -76,5 +82,14 @@
         <argument
             android:name="score"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/howToPlayFragment"
+        android:name="com.nureddinelmas.mastermind.HowToPlayFragment"
+        android:label="fragment_how_to_play"
+        tools:layout="@layout/fragment_how_to_play" >
+        <action
+            android:id="@+id/action_howToPlayFragment_to_introFragment"
+            app:destination="@id/introFragment" />
     </fragment>
 </navigation>
